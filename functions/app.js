@@ -86,6 +86,5 @@ app.post("/dialogflow", express.json(), (req, res) => {
   agent.handleRequest(intentMap);
 });
 
-app.listen(process.env.PORT || 8080);
+// app.listen(process.env.PORT || 8080);
 exports.app = functions.https.onRequest(app);
-// module.exports = app;
