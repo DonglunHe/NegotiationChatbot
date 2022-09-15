@@ -1,0 +1,104 @@
+[debug] [2022-09-15T01:02:33.688Z] ----------------------------------------------------------------------
+[debug] [2022-09-15T01:02:33.689Z] Command:       /Users/alca/Documents/NegotiationChatbot/functions/node_modules/node/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2022-09-15T01:02:33.690Z] CLI Version:   11.9.0
+[debug] [2022-09-15T01:02:33.690Z] Platform:      darwin
+[debug] [2022-09-15T01:02:33.690Z] Node Version:  v14.20.0
+[debug] [2022-09-15T01:02:33.690Z] Time:          Wed Sep 14 2022 21:02:33 GMT-0400 (Eastern Daylight Time)
+[debug] [2022-09-15T01:02:33.690Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-15T01:02:33.742Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-15T01:02:33.742Z] > authorizing via signed-in user (hedonglun123@gmail.com)
+[debug] [2022-09-15T01:02:33.742Z] [iam] checking project negotiationbot-5523e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2022-09-15T01:02:33.744Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/negotiationbot-5523e:testIamPermissions [none]
+[debug] [2022-09-15T01:02:33.744Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/negotiationbot-5523e:testIamPermissions x-goog-quota-user=projects/negotiationbot-5523e
+[debug] [2022-09-15T01:02:33.744Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/negotiationbot-5523e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-09-15T01:02:34.099Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/negotiationbot-5523e:testIamPermissions 200
+[debug] [2022-09-15T01:02:34.099Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/negotiationbot-5523e:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2022-09-15T01:02:34.101Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/negotiationbot-5523e/serviceAccounts/negotiationbot-5523e@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2022-09-15T01:02:34.101Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/negotiationbot-5523e/serviceAccounts/negotiationbot-5523e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2022-09-15T01:02:34.376Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/negotiationbot-5523e/serviceAccounts/negotiationbot-5523e@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2022-09-15T01:02:34.376Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/negotiationbot-5523e/serviceAccounts/negotiationbot-5523e@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'negotiationbot-5523e'...
+[info] 
+[info] i  deploying functions 
+[debug] [2022-09-15T01:02:34.379Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e [none]
+[debug] [2022-09-15T01:02:34.870Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e 200
+[debug] [2022-09-15T01:02:34.870Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e {"projectId":"negotiationbot-5523e","projectNumber":"150326483350","displayName":"NegotiationBot","name":"projects/negotiationbot-5523e","resources":{"hostingSite":"negotiationbot-5523e","storageBucket":"negotiationbot-5523e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_85eb8ab0-b4ce-499a-b164-5f89c5b13bcf"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-09-15T01:02:34.871Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-09-15T01:02:34.874Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-09-15T01:02:34.875Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudbuild.googleapis.com [none]
+[debug] [2022-09-15T01:02:34.875Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/artifactregistry.googleapis.com [none]
+[debug] [2022-09-15T01:02:35.370Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudfunctions.googleapis.com 200
+[debug] [2022-09-15T01:02:35.371Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-09-15T01:02:35.374Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/artifactregistry.googleapis.com 200
+[debug] [2022-09-15T01:02:35.375Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-09-15T01:02:35.380Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudbuild.googleapis.com 200
+[debug] [2022-09-15T01:02:35.381Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-09-15T01:02:35.382Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/runtimeconfig.googleapis.com 200
+[debug] [2022-09-15T01:02:35.382Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/negotiationbot-5523e/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-09-15T01:02:35.383Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e/adminSdkConfig [none]
+[debug] [2022-09-15T01:02:35.832Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e/adminSdkConfig 200
+[debug] [2022-09-15T01:02:35.833Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/negotiationbot-5523e/adminSdkConfig {"projectId":"negotiationbot-5523e","storageBucket":"negotiationbot-5523e.appspot.com","locationId":"us-central"}
+[debug] [2022-09-15T01:02:35.834Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/negotiationbot-5523e/configs [none]
+[debug] [2022-09-15T01:02:36.170Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/negotiationbot-5523e/configs 200
+[debug] [2022-09-15T01:02:36.170Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/negotiationbot-5523e/configs {}
+[info] i  functions: preparing codebase default for deployment 
+[debug] [2022-09-15T01:02:36.172Z] Validating nodejs source
+[debug] [2022-09-15T01:02:37.674Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "dev": "nodemon --inspect app.js",
+    "tunnel": "ngrok http 8080",
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "express": "^4.18.1",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node": "^14.20.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0",
+    "ngrok": "^4.3.3",
+    "nodemon": "^2.0.19"
+  },
+  "private": true
+}
+[debug] [2022-09-15T01:02:37.674Z] Building nodejs source
+[debug] [2022-09-15T01:02:37.676Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-09-15T01:02:37.857Z] Serving at port 9007
+
+[debug] [2022-09-15T01:02:38.352Z] FetchError: request to http://localhost:9007/__/quitquitquit failed, reason: connect ECONNREFUSED 127.0.0.1:9007
+    at ClientRequest.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/node-fetch/lib/index.js:1491:11)
+    at ClientRequest.emit (events.js:400:28)
+    at ClientRequest.emit (domain.js:475:12)
+    at Socket.socketErrorListener (_http_client.js:475:9)
+    at Socket.emit (events.js:400:28)
+    at Socket.emit (domain.js:475:12)
+    at emitErrorNT (internal/streams/destroy.js:106:8)
+    at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+    at processTicksAndRejections (internal/process/task_queues.js:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.

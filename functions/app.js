@@ -65,7 +65,9 @@ app.post("/dialogflow", express.json(), (req, res) => {
     if (tooHigh) {
       response += "Please note that the higheset offer we accepst is 20000. Any offer higher than 20000 will be omitted. ";
     }
-    response = response + "Here is the average of all your current offers: " + average;
+    if (average != 0) {
+      response = response + "Here is the average of all your current offers: " + average;
+    }
     agent.add(response);
   }
 
@@ -83,7 +85,7 @@ app.post("/dialogflow", express.json(), (req, res) => {
   const agent = new WebhookClient({ request: req, response: res });
   agent.handleRequest(intentMap);
 });
-/** JSDoc */
-// app.listen(process.env.PORT || 8080);
+
+app.listen(process.env.PORT || 8080);
 exports.app = functions.https.onRequest(app);
 // module.exports = app;
