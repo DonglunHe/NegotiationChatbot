@@ -1,3 +1,4 @@
+/** Start Import */
 const functions = require("firebase-functions");
 const express = require("express");
 const { WebhookClient } = require("dialogflow-fulfillment");
@@ -5,8 +6,7 @@ const app = express();
 // The Firebase Admin SDK to access Firestore.
 const admin = require("firebase-admin");
 admin.initializeApp();
-
-const sessionIds = {};
+/** End Import */
 
 
 /** Simple GET to indicate the server is running */
@@ -15,16 +15,10 @@ app.get("/", (req, res) => {
   res.send("online");
 });
 
-app.get("/hello", (req, res) => {
-  res.send("hello");
-});
-
 /** POST request for dialogflow */
 app.post("/dialogflow", express.json(), (req, res) => {
   console.log("POST for dialogflow");
   const tag = req.body.queryResult.intent.displayName;
-  const offerNum = req.body.queryResult.parameters.offerNumber;
-  const sessionId = req.body.session;
 
   /** welcome */
   function welcome() {
@@ -36,39 +30,57 @@ app.post("/dialogflow", express.json(), (req, res) => {
   }
   /** offer */
   function offer() {
+    // get the session name to return to
+    let sessionName = req.body.queryResult.outputContexts[0].name;
+    sessionName = sessionName.split('/').slice(0, -1).join('/');
+    // current list of offers 
+    const currentOffers = req.body.queryResult.parameters.offers;
+    // previous list of offers stored in the context list
+    const prevOffers = req.body.queryResult.parameters.prev;
+    // default response
     let response = "Thank you for your offer. ";
+    // default average
     let average = 0;
     let tooLow = false;
     let tooHigh = false;
-    for (const offer of offerNum) {
-      if (offer < 7000) {
+
+    for (var num of currentOffers) {
+      // check if number if legal
+      if (num < 7000) {
         tooLow = true;
-      } else if (offer > 20000) {
+      } else if (num > 20000) {
         tooHigh = true;
       } else {
-        let sum = 0;
-        if (sessionIds[sessionId]) {
-          sessionIds[sessionId].push(offer);
-          for (let i = 0; i < sessionIds[sessionId].length; i++) {
-            sum += sessionIds[sessionId][i];
-          }
-          average = sum / sessionIds[sessionId].length;
-        } else {
-          sessionIds[sessionId] = [offer];
-          average = offer;
-        }
+        prevOffers.push(num);
       }
     }
+    // calculate the average
+    let sum = 0
+    for (var num of prevOffers) {
+      sum += num;
+    }
+    average = sum / prevOffers.length;
+
+    // illegal response
     if (tooLow) {
       response += "Please note that the lowest offer we accept is 7000. Any offer lower than 7000 will be omitted. ";
     }
     if (tooHigh) {
       response += "Please note that the higheset offer we accepst is 20000. Any offer higher than 20000 will be omitted. ";
     }
+
+    // if user input illegal number, does not calculate the response
     if (average != 0) {
       response = response + "Here is the average of all your current offers: " + average;
     }
+
+    // add the response to the session and return as params
     agent.add(response);
+    agent.setContext({
+      name: sessionName + '/prev_offer_numbers',
+      lifespan: 25,
+      parameters: { offerNums: prevOffers }
+    });
   }
 
   const intentMap = new Map();
@@ -86,5 +98,5 @@ app.post("/dialogflow", express.json(), (req, res) => {
   agent.handleRequest(intentMap);
 });
 
-// app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);
 exports.app = functions.https.onRequest(app);
